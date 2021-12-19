@@ -30,10 +30,10 @@ public class InputProcessor {
                     (Objects.equals(table[array_win_combos[i][1]], table[array_win_combos[i][2]]))) {
                 //if 3 table elements in one of the win_combos are equal, execute following lines:
                 if (table[array_win_combos[i][0]] == "X") {
-                    System.out.println("Player has won!");
+                    System.out.println("Player 1 has won!");
                 }
-                if (table[array_win_combos[i][0]] == "O") {
-                    System.out.println("AI has won!");
+                if (table[array_win_combos[i][0]] == "@") {
+                    System.out.println("Player 2 has won!");
                 }
                 return true;
             }
