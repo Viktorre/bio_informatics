@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 import static AI.AI.*;
@@ -54,11 +55,11 @@ public class GameEngine {
         else {
             selected_player = player_2;
         }
-        if (selected_player=="human") {
+        if (Objects.equals(selected_player, "human")) {
             System.out.print(game_status + " Choose a field number to fill (or q to quit): ");
             return keyboard.readLine();
         }
-        else if (player_1=="AI easy") {
+        else if (Objects.equals(player_1, "AI easy")) {
             return make_random_move(table);
         }
         else { //case for hard ai
@@ -99,5 +100,31 @@ public class GameEngine {
       System.out.println("### update_game_status suffered a bug");
       return "Game Over"; //this line can theoretically never be run, but needs to be there due to syntax
     }
+
+    public static String[] ask_and_return_game_settings() throws IOException, InterruptedException {
+        String player_array[] = {"human","human"};
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader keyboard = new BufferedReader(isr);
+        System.out.println("Current game setting is: "+player_array[0]+" vs "+player_array[0]+".");
+        System.out.println("Press s for settings or any other key to start game!");
+        String input = keyboard.readLine();
+        if (Objects.equals(input, "s")) {
+            System.out.println("Current game setting is: "+player_array[0]+" vs "+player_array[0]+".");
+            System.out.println("Type one of three options for Player 1: human - AI easy - AI hard");
+            while (!InputProcessor.check_validity_of_input_for_player_setting_and_warn_if_not(input)) {
+                input = keyboard.readLine();
+            }
+            player_array[0] = input;
+            System.out.println("Current game setting is: "+player_array[0]+" vs "+player_array[0]+".");
+            System.out.println("Type one of three options for Player 2: human - AI easy - AI hard");
+            input = "s";//reset input variable
+            while (!InputProcessor.check_validity_of_input_for_player_setting_and_warn_if_not(input)) {
+                input = keyboard.readLine();
+            }
+            player_array[1] = input;
+        }
+        return player_array;
+    }
+
 }
 

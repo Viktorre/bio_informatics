@@ -17,9 +17,9 @@ public class Main {
         BufferedReader keyboard = new BufferedReader(isr);
         String table[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         String game_status; // will have 3 values: game_over, turn player 1, turn player 2
-        String  Player_1= "human";
-        String Player_2 = "human";
-
+        String player_array[] = GameEngine.ask_and_return_game_settings();
+        String  Player_1= player_array[0];
+        String Player_2 = player_array[1];
         GameEngine tictactoe = new GameEngine();
         game_status = tictactoe.choose_which_player_starts();
         tictactoe.print_field(table);
@@ -30,5 +30,4 @@ public class Main {
     }
 }
 // make smart ai
-// make option select for human ai usw
 //fix bug that random ai takes random fields that are taken

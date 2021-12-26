@@ -2,6 +2,9 @@ package InputProcessor;
 
 import java.util.Objects;
 
+import static AI.AI.make_random_move;
+import static AI.AI.make_smart_ai_move;
+
 public class InputProcessor {
 
     public static String[] update_table(String[] table, String input, String sign) {
@@ -55,5 +58,22 @@ public class InputProcessor {
         }
         System.out.println("Game ended in a draw!");
         return true;
+    }
+
+    public static boolean check_validity_of_input_for_player_setting_and_warn_if_not(String input) {
+        if (Objects.equals(input, "human")) {
+            return true;
+        }
+        if (Objects.equals(input, "AI easy")) {
+            return true;
+        }
+        if (Objects.equals(input, "AI hard")) {
+            return true;
+        }
+        if (Objects.equals(input, "s")) {
+            return false; //for when the loop in game engine methods starts and the input is still "s"
+        }
+        System.out.println('"'+input+'"'+" is not a valid input. Type again!");
+        return false;
     }
 }
