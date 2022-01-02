@@ -105,17 +105,17 @@ public class GameEngine {
         String player_array[] = {"human","human"};
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader keyboard = new BufferedReader(isr);
-        System.out.println("Current game setting is: "+player_array[0]+" vs "+player_array[0]+".");
+        System.out.println("Current game setting is: "+player_array[0]+" vs "+player_array[1]+".");
         System.out.println("Press s for settings or any other key to start game!");
         String input = keyboard.readLine();
         if (Objects.equals(input, "s")) {
-            System.out.println("Current game setting is: "+player_array[0]+" vs "+player_array[0]+".");
+            System.out.println("Current game setting is: "+player_array[0]+" vs "+player_array[1]+".");
             System.out.println("Type one of three options for Player 1: human - AI easy - AI hard");
             while (!InputProcessor.check_validity_of_input_for_player_setting_and_warn_if_not(input)) {
                 input = keyboard.readLine();
             }
             player_array[0] = input;
-            System.out.println("Current game setting is: "+player_array[0]+" vs "+player_array[0]+".");
+            System.out.println("Current game setting is: "+player_array[0]+" vs "+player_array[1]+".");
             System.out.println("Type one of three options for Player 2: human - AI easy - AI hard");
             input = "s";//reset input variable
             while (!InputProcessor.check_validity_of_input_for_player_setting_and_warn_if_not(input)) {
